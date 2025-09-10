@@ -1,0 +1,58 @@
+Version 1 : DFA
+    - seed = 42, batch_size = 128, num_worker = 4
+    - dropout = 0.05, LeakyRelu(0.5)
+    - Block 11 + Norm + Head
+    - lr = 1e-4, weight_decay = 1e-3, epochs = 9
+    - labe_smooth = 0.1, T_0 = 3, T_mult = 2
+    - Mean Confidence : 0.8003, Std Deviation : 0.013
+
+Version 2 : DFA (He Initialisation)
+    - seed = 42, batch_size = 128, num_worker = 4
+    - dropout = 0.05, GELU()
+    - Block 11 + Norm + Head
+    - lr = 1e-4, weight_decay = 1e-3, epochs = 9
+    - labe_smooth = 0.1, T_0 = 3, T_mult = 2
+    - Mean Confidence: 0.7918, Std Deviation: 0.1346
+    - Test Accuracy: 86.1% 
+
+Version 3 : Version 2 + Gradient Clipping + Fix scheduler position
+    - seed = 42, batch_size = 128, num_worker = 4
+    - dropout = 0.05, GELU()
+    - Block 11 + Norm + Head
+    - lr = 1e-4, weight_decay = 1e-3, epochs = 9
+    - labe_smooth = 0.1, T_0 = 3, T_mult = 2
+    - Mean Confidence: 0.8164 , Std Deviation: 0.0262
+    - Test Accuracy: 86.38%
+    - Precision: 0.8959, Recall: 0.8232, F1 Score: 0.8580, ROC-AUC: 0.8960
+    - Confusion Matrix:
+        [[14825  1566]
+        [ 2896 13481]]
+
+Version 4 : Version 3 + Fix Dataset Loaeder
+    - seed = 42, batch_size = 128, num_worker = 4
+    - dropout = 0.05, GELU()
+    - Block 11 + Norm + Head
+    - lr = 1e-4, weight_decay = 1e-3, epochs = 9
+    - labe_smooth = 0.1, T_0 = 3, T_mult = 2
+    - Mean Confidence: , Std Deviation: 
+    Test Accuracy : 77.04%
+    Precision     : 0.8079
+    Recall        : 0.7092
+    F1 Score      : 0.7553
+    ROC-AUC       : 0.8175
+    Confusion Matrix:
+    [[13629  2762]
+    [ 4763 11614]]  
+
+Version 5 : Version 4 + 32 epochs
+    - seed = 42, batch_size = 128, num_worker = 4
+    - dropout = 0.05, GELU()
+    - Block 11 + Norm + Head
+    - lr = 1e-4, weight_decay = 5e-4, epochs = 32
+    - labe_smooth = 0.1, T_0 = 3, T_mult = 2
+    - Mean Confidence: 0.8164 , Std Deviation: 0.0262
+    - Test Accuracy: 86.38%
+    - Precision: 0.8959, Recall: 0.8232, F1 Score: 0.8580, ROC-AUC: 0.8960
+    - Confusion Matrix:
+        [[14825  1566]
+        [ 2896 13481]]
