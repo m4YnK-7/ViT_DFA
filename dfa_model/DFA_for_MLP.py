@@ -18,15 +18,14 @@ class LinearDFAFunction(Function):
         ctx.is_output = is_output_layer
 
         # Normalize feedback matrix
-        # B_sign_symmetric = B.sign() * weight.t().sign()  # Enforce sign symmetry between B and weight.T
         B_norm = F.normalize(B, dim=1)
-        
         ctx.save_for_backward(input, weight, bias if bias is not None else torch.tensor([], device=input.device), B_norm)
 
         # Standard forward
         out = input @ weight.t()
         if bias is not None:
             out = out + bias
+        
         return out
 
     @staticmethod

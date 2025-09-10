@@ -1,3 +1,7 @@
+'''
+Visualises how the learning rate is changed by scheduler. 
+'''
+
 import torch
 import matplotlib.pyplot as plt
 from torch.optim import AdamW
